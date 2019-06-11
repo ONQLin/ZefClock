@@ -108,7 +108,7 @@ public class clockActivity extends MainActivity {
                 Log.i("EditActivity","小时为"+centime.getHour());     //get the data
                 String v_id = centime.getHour();
                 String z_id = centime.getMin();
-                tv_clock1.setText(v_id + ":" + z_id);
+                tv_clock1.setText("   "+v_id + ":" + z_id+"   ");
                 Intent service=new Intent(this, Timeservice.class);  //send data to service
                 service.putExtra("time_mes", centime);
                 intent.setAction("Timeservice");

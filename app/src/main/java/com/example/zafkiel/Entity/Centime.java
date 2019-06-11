@@ -5,10 +5,21 @@ import java.io.Serializable;
 public class Centime implements Serializable {
     private String hour;
     private String min;
+    private String hint;
+
+    public String getHint() {
+        return hint;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
+
     private boolean set_status;
     public Centime(){
         hour="";
         min="";
+        hint="";
         set_status=true;
     }
     public String getHour() {
