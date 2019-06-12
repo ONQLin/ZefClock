@@ -9,4 +9,4 @@ an alarm clock apk
 5.But the param of interfaces should be added to the entity "Centime" which can be conveyed to the tiemservice.
 6.So plz realize your modules & their interfaces First(today).
 7.加了gradle看可以不可以，不能编译的话这库就白给了
-
+8.现在能到时间后跳转了
