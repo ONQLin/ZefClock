@@ -61,8 +61,7 @@ public class TTsActivity extends AppCompatActivity {
                 out.setText(notes);
                 TextToVoiceInterface ttsp =new TextToSpeechSystem();
                 ttsp.get_tts(ttspeech);
-                notes=clk.getHint();
-                ttsp.play(clk);
+                ttsp.play(notes);
             }
         });
 

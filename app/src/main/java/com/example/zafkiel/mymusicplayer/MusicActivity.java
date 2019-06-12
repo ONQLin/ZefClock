@@ -6,14 +6,23 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.zafkiel.R;
+import com.example.zafkiel.TTsActivity;
+import com.example.zafkiel.TextToSpeechSystem;
+import com.example.zafkiel.TextToVoiceInterface;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class MusicActivity extends AppCompatActivity implements View.OnClickListener {
     private String TAG = "MusicActivity";
@@ -21,6 +30,8 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
     private ImageView stopImgv;
     private boolean isStop;
     private MediaPlayer mediaPlayer;
+    private TextToSpeech ttspeech;
+    String notes;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -43,6 +54,29 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
 
         mediaPlayer = new MediaPlayer();
         play(Common.musicList.get(position).path);
+
+
+        Button bt2=(Button)findViewById(R.id.voice_playbt);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextToVoiceInterface ttsp =new TextToSpeechSystem();
+                ttsp.get_tts(ttspeech);
+                ttsp.play(notes);
+            }
+        });
+
+        ttspeech=new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status==TextToSpeech.SUCCESS){
+                    int supported=ttspeech.setLanguage(Locale.CHINA);
+                    if((supported!=TextToSpeech.LANG_AVAILABLE)&&(supported!=TextToSpeech.LANG_COUNTRY_AVAILABLE)){
+                        Toast.makeText(MusicActivity.this,"不支持当前语言",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
 
     }
 

@@ -12,9 +12,9 @@ import java.util.Locale;
 public class TextToSpeechSystem  implements  TextToVoiceInterface{
     TextToSpeech ttspeech;
     @Override
-    public void play(Centime clk){
-        String note=clk.getHint();
-        ttspeech.speak(note,TextToSpeech.QUEUE_FLUSH,null);
+    public void play(String notes){
+
+        ttspeech.speak(notes,TextToSpeech.QUEUE_FLUSH,null);
     }
     @Override
     public void get_tts(TextToSpeech tes){
