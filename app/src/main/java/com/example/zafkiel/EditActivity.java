@@ -3,16 +3,19 @@ package com.example.zafkiel;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.zafkiel.Entity.Centime;
 import com.example.zafkiel.mymusicplayer.MainActivity_music;
 
 public class EditActivity extends clockActivity {
-
+    Centime centime = new Centime();
     private EditText input_hr, input_min, input_hint;
+    public int position;
     public String pw1, pw2, pw3;
     public String path;
+    private Button button;
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -22,6 +25,20 @@ public class EditActivity extends clockActivity {
 
         Intent intent = getIntent();                                                    //通过getIntent()方法实现intent信息的获取
         path = intent.getStringExtra("path");            //获取path
+        position = intent.getIntExtra("position",0);
+
+        button=(Button)findViewById(R.id.jmp_tts);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(EditActivity.this,TTsActivity.class);
+                Bundle mBundle=new Bundle();
+                mBundle.putSerializable("centime",centime);
+                intent.putExtras(mBundle);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -37,11 +54,12 @@ public class EditActivity extends clockActivity {
                     pw2 = input_min.getText().toString();
                     pw3 = input_hint.getText().toString();
                     Intent intent=new Intent();
-                    Centime centime = new Centime();
+
                     centime.setHour(pw1);
                     centime.setMin(pw2);
                     centime.setHint(pw3);
                     centime.setPath(path);
+                    centime.setPosition(position);
                     centime.setSet_status(true);
                     intent.setClass(getApplicationContext(), clockActivity.class);
                     intent.putExtra("time_mes",centime);

@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.zafkiel.Entity.Centime;
+import com.example.zafkiel.mymusicplayer.MainActivity_music;
+import com.example.zafkiel.mymusicplayer.MusicActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -106,7 +108,7 @@ public class clockActivity extends MainActivity {
 
             case R.id.btn_edit1:
                 flag=true;
-                intent.setClass(getApplicationContext(), EditActivity.class);
+                intent.setClass(getApplicationContext(), MainActivity_music.class);
                 startActivity(intent);
                  break;
 
