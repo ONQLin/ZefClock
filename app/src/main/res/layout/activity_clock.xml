@@ -51,9 +51,16 @@
         <Button
             android:layout_gravity="right"
             android:text="编辑"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/btn_edit1"/>
+        <Button
+            android:layout_gravity="right"
+            android:text="分享"
+            android:textSize="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/btn_share"/>
     </LinearLayout>
 
     <RelativeLayout
