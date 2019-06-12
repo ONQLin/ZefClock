@@ -12,6 +12,7 @@ import java.util.Calendar;
 
 public class DataChangeReceiver extends BroadcastReceiver {
     private String str_1, str_2,path;
+    private int position;
     @Override
     public void onReceive(Context context, Intent intent) {    //time-tick触发调用，后台每分钟一次接受，并调用下面的操作
         Log.i("jabot", "123321");
@@ -21,13 +22,14 @@ public class DataChangeReceiver extends BroadcastReceiver {
         int minute = mc.get(Calendar.MINUTE);
         String hr=String.valueOf(hour);
         String min=String.valueOf(minute);
+        Intent i = new Intent(context,MusicActivity.class);
+        i.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+        i.putExtra("position",position);
+        i.putExtra("musicPath",path);
 
         if(hr.equals(str_1) && min.equals(str_2)) {
             Log.i("jabot", "到时间了");//.... 开始调用你们的功能
 
-            Intent i = new Intent();
-            i.setClass(context.getApplicationContext(), MusicActivity.class);
-            i.putExtra("musicPath",path);
             context.startActivity(i);
         }
     }
@@ -37,6 +39,7 @@ public class DataChangeReceiver extends BroadcastReceiver {
         str_1=ct.getHour();
         str_2=ct.getMin();
         path=ct.getPath();
+        position=ct.getPositon();
         return  str_1+str_2;
     }
 

@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.zafkiel.Entity.Centime;
+import com.example.zafkiel.mymusicplayer.MainActivity_music;
+import com.example.zafkiel.mymusicplayer.MusicActivity;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -97,7 +99,7 @@ public class clockActivity extends MainActivity {
 
             case R.id.btn_edit1:
                 flag=true;
-                intent.setClass(getApplicationContext(), EditActivity.class);
+                intent.setClass(getApplicationContext(), MainActivity_music.class);
                 startActivity(intent);
                  break;
 

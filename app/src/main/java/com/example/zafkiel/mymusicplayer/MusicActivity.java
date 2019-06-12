@@ -8,21 +8,16 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.zafkiel.EditActivity;
-import com.example.zafkiel.Entity.DataChangeReceiver;
 import com.example.zafkiel.R;
-import com.example.zafkiel.mymusicplayer.Common;
 
 import java.io.IOException;
 
 public class MusicActivity extends AppCompatActivity implements View.OnClickListener {
     private String TAG = "MusicActivity";
     private int position;
-    private String musicPath;
     private ImageView stopImgv;
     private boolean isStop;
     private MediaPlayer mediaPlayer;
@@ -36,7 +31,7 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
 
@@ -44,10 +39,10 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         bingID();                                                                           //调用bingID();方法实现对控件的绑定
 
         Intent intent = getIntent();                                                    //通过getIntent()方法实现intent信息的获取
-        musicPath = intent.getStringExtra("musicPath");
+        position = intent.getIntExtra("position", 0);            //获取position
 
         mediaPlayer = new MediaPlayer();
-        play(musicPath);
+        play(Common.musicList.get(position).path);
 
     }
 
@@ -62,14 +57,13 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
             mediaPlayer.setDataSource(path);
             mediaPlayer.prepare();
             mediaPlayer.start();
-            Log.i("music", "123");
             mediaPlayer.setOnCompletionListener((new MediaPlayer.OnCompletionListener() {
                         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                         @Override
                         public void onCompletion(MediaPlayer mp) {
                             if(!mediaPlayer.isPlaying()){
                                 mediaPlayer.reset();
-                                play(musicPath);
+                                play(Common.musicList.get(position).path);
                             }
                         }
                     })
