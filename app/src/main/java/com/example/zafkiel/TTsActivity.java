@@ -28,16 +28,7 @@ public class TTsActivity extends AppCompatActivity {
 
         clk=(Centime) getIntent().getSerializableExtra("centime");
 
-        Switch s=(Switch)findViewById(R.id.switch1);
-        s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked)
-                    clk.setSet_status(true);
-                else
-                    clk.setSet_status(false);
-            }
-        });
+
 
         Button testbutton=(Button)findViewById(R.id.button) ;
         testbutton.setOnClickListener(new View.OnClickListener() {

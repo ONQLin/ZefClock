@@ -40,7 +40,7 @@ public class Centime implements Serializable {
         hint="1";
         path="";
         position=0;
-        set_status=true;
+        set_status=false;
     }
     public String getHour() {
         return hour;

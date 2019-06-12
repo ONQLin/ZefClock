@@ -32,6 +32,7 @@ public class MusicActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private TextToSpeech ttspeech;
     String notes;
+    boolean flag;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -61,9 +62,7 @@ public class MusicActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextToVoiceInterface ttsp =new TextToSpeechSystem();
-                ttsp.get_tts(ttspeech);
-                ttsp.play(notes);
+                stop_music();
             }
         });
 
