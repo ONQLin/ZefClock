@@ -1,10 +1,12 @@
 package com.example.zafkiel;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.Log;
 
 import com.example.zafkiel.Entity.Centime;
@@ -12,6 +14,7 @@ import com.example.zafkiel.Entity.DataChangeReceiver;
 
 public class Timeservice extends Service {
     static public String str1,str2;
+    private PowerManager.WakeLock wakeLock = null;
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -31,6 +34,9 @@ public class Timeservice extends Service {
     public void onCreate() {
 
         super.onCreate();
+        PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, Timeservice.class.getName());
+        wakeLock.acquire();
         Log.i("jabot", "后台进程被创建。。。");
 
     }
@@ -39,7 +45,10 @@ public class Timeservice extends Service {
 
     @Override
     public void onDestroy() {
-
+        if (wakeLock != null) {
+            wakeLock.release();
+            wakeLock = null;
+        }
         Log.i("jabot", "后台进程被销毁了。。。");
         super.onDestroy();
     }

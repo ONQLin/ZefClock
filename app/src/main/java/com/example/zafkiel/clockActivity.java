@@ -90,6 +90,7 @@ public class clockActivity extends MainActivity {
         findViewById(R.id.btn_edit1).setOnClickListener(this);
         findViewById(R.id.btn_on).setOnClickListener(this);
         findViewById(R.id.btn_share).setOnClickListener(this);
+        findViewById(R.id.btn_del).setOnClickListener(this);
         SimpleDateFormat SDF = new SimpleDateFormat("   HH:mm   ");
         Date date = new Date(System.currentTimeMillis());
         tv_clock1.setText(SDF.format(date));
@@ -169,6 +170,12 @@ public class clockActivity extends MainActivity {
                 service.putExtra("time_mes", centime);
                 intent.setAction("Timeservice");
                 startService(service);
+                break;
+
+            case R.id.btn_del:
+                flag=true;
+                intent.setClass(getApplicationContext(), EditActivity.class);
+                startActivity(intent);
                 break;
         }
     }

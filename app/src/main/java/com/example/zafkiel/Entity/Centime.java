@@ -35,9 +35,10 @@ public class Centime implements Serializable {
 
     private boolean set_status;
     public Centime(){
-        hour="";
-        min="";
-        hint="";
+        hour="1";
+        min="1";
+        hint="1";
+        position=1;
         set_status=true;
     }
     public String getHour() {
