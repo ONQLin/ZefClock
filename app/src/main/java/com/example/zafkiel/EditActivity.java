@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.zafkiel.Entity.Centime;
 import com.example.zafkiel.mymusicplayer.MainActivity_music;
@@ -26,6 +28,17 @@ public class EditActivity extends clockActivity {
         Intent intent = getIntent();                                                    //通过getIntent()方法实现intent信息的获取
         path = intent.getStringExtra("path");            //获取path
         position = intent.getIntExtra("position",0);
+
+        Switch s=(Switch)findViewById(R.id.switch1);
+        s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                    centime.setSet_status(true);
+                else
+                    centime.setSet_status(false);
+            }
+        });
 
         button=(Button)findViewById(R.id.jmp_tts);
         button.setOnClickListener(new View.OnClickListener() {

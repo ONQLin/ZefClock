@@ -11,19 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="200dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="80dp"
-            android:showText="true"
-            android:switchTextAppearance="@style/SwitchTheme"
-            android:text="FunctionEnable"
-            android:textOff="OFF"
-            android:textOn="ON"
-            android:thumb="@drawable/switch_custom_thumb_selector"
-            android:track="@drawable/switch_custom_track_selector" />
+
 
         <EditText
             android:id="@+id/testtext"
