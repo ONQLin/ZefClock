@@ -6,6 +6,15 @@ public class Centime implements Serializable {
     private String hour;
     private String min;
     private String hint;
+    private String path;
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 
     public String getHint() {
         return hint;

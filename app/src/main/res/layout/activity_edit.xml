@@ -75,4 +75,10 @@
     android:text="返回"
     android:id="@+id/btn_return"/>
 
+    <Button
+        android:id="@+id/select_music"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:text="选择音乐" />
+
 </LinearLayout>
