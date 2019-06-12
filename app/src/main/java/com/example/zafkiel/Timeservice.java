@@ -47,8 +47,6 @@ public class Timeservice extends Service {
 
     }
 
-
-
     @Override
     public void onDestroy() {
         if (mWakeLock != null) {

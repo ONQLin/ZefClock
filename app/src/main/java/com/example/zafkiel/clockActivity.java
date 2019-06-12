@@ -206,6 +206,17 @@ public class clockActivity extends MainActivity {
         }
     }
 
+    public void startservice( Centime ct)
+    {
+        //get the data
+        Intent intent=new Intent();
+        Intent service=new Intent(this, Timeservice.class);  //send data to service
+        service.putExtra("time_mes", ct);
+        intent.setAction("Timeservice");
+        startService(service);
+
+    }
+
 }
 
 
