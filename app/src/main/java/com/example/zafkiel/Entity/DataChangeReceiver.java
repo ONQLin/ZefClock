@@ -11,7 +11,7 @@ import com.example.zafkiel.mymusicplayer.MusicActivity;
 import java.util.Calendar;
 
 public class DataChangeReceiver extends BroadcastReceiver {
-    private String str_1, str_2,path;
+    private String str_1, str_2,path,notes;
     private int position;
     @Override
     public void onReceive(Context context, Intent intent) {    //time-tick触发调用，后台每分钟一次接受，并调用下面的操作
@@ -26,6 +26,7 @@ public class DataChangeReceiver extends BroadcastReceiver {
         i.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
         i.putExtra("position",position);
         i.putExtra("musicPath",path);
+        i.putExtra("notes",notes);
 
         if(hr.equals(str_1) && min.equals(str_2)) {
             Log.i("jabot", "到时间了");//.... 开始调用你们的功能
@@ -40,6 +41,7 @@ public class DataChangeReceiver extends BroadcastReceiver {
         str_2=ct.getMin();
         path=ct.getPath();
         position=ct.getPositon();
+        notes=ct.getHint();
         return  str_1+str_2;
     }
 

@@ -24,7 +24,7 @@ import com.example.zafkiel.TextToVoiceInterface;
 import java.io.IOException;
 import java.util.Locale;
 
-public class MusicActivity extends AppCompatActivity implements View.OnClickListener {
+public class MusicActivity extends AppCompatActivity {
     private String TAG = "MusicActivity";
     private int position;
     private ImageView stopImgv;
@@ -51,6 +51,7 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
 
         Intent intent = getIntent();                                                    //通过getIntent()方法实现intent信息的获取
         position = intent.getIntExtra("position", 0);            //获取position
+        notes = intent.getStringExtra("notes");
 
         mediaPlayer = new MediaPlayer();
         play(Common.musicList.get(position).path);
@@ -109,19 +110,14 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         MusicThread musicThread = new MusicThread();                                         //启动线程
         new Thread(musicThread).start();
     }
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.music_stop_imgv:
-                if(mediaPlayer.isPlaying()){
-                    mediaPlayer.stop();
-                }
-                break;
-            default:
-                break;
-        }
 
+    public void stop_music(){
+        mediaPlayer.stop();
+        mediaPlayer.release();
+        mediaPlayer = null;
+        TextToVoiceInterface tts =new TextToSpeechSystem();
+        tts.get_tts(ttspeech);
+        tts.play(notes);
     }
 
     @Override
