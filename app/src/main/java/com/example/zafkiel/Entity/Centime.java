@@ -7,6 +7,15 @@ public class Centime implements Serializable {
     private String min;
     private String hint;
     private String path;
+    private int position;
+
+    public int getPositon() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public String getPath() {
         return path;

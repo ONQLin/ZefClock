@@ -11,6 +11,7 @@ import com.example.zafkiel.mymusicplayer.MainActivity_music;
 public class EditActivity extends clockActivity {
 
     private EditText input_hr, input_min, input_hint;
+    public int position;
     public String pw1, pw2, pw3;
     public String path;
     public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class EditActivity extends clockActivity {
 
         Intent intent = getIntent();                                                    //通过getIntent()方法实现intent信息的获取
         path = intent.getStringExtra("path");            //获取path
+        position = intent.getIntExtra("position",0);
 
 
     }
@@ -42,6 +44,7 @@ public class EditActivity extends clockActivity {
                     centime.setMin(pw2);
                     centime.setHint(pw3);
                     centime.setPath(path);
+                    centime.setPosition(position);
                     centime.setSet_status(true);
                     intent.setClass(getApplicationContext(), clockActivity.class);
                     intent.putExtra("time_mes",centime);

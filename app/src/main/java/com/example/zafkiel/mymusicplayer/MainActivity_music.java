@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.zafkiel.EditActivity;
+import com.example.zafkiel.MainActivity;
 import com.example.zafkiel.R;
 import com.example.zafkiel.mymusicplayer.LogicFragment;
 import com.example.zafkiel.mymusicplayer.MusicPagerAdapter;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //实现OnClickListener的接口
-public class MainActivity_music extends EditActivity {
+public class MainActivity_music extends MainActivity {
     //定义activity_main.xml的控件对象
     private TextView logicTv;
     private ViewPager viewPager;
