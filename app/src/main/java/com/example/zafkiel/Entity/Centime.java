@@ -38,7 +38,8 @@ public class Centime implements Serializable {
         hour="1";
         min="1";
         hint="1";
-        position=1;
+        path="";
+        position=0;
         set_status=true;
     }
     public String getHour() {
@@ -69,5 +70,8 @@ public class Centime implements Serializable {
     {
         this.hour=cty.getHour();
         this.min=cty.getMin();
+        this.hint=cty.getHint();
+        this.path=cty.getPath();
+        this.position=cty.getPositon();
     }
 }
