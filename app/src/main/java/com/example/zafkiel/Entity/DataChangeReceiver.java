@@ -21,13 +21,13 @@ public class DataChangeReceiver extends BroadcastReceiver {
         int minute = mc.get(Calendar.MINUTE);
         String hr=String.valueOf(hour);
         String min=String.valueOf(minute);
+        Intent i = new Intent(context,MusicActivity.class);
+        i.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+        i.putExtra("musicPath",path);
 
         if(hr.equals(str_1) && min.equals(str_2)) {
             Log.i("jabot", "到时间了");//.... 开始调用你们的功能
 
-            Intent i = new Intent();
-            i.setClass(context.getApplicationContext(), MusicActivity.class);
-            i.putExtra("musicPath",path);
             context.startActivity(i);
         }
     }
