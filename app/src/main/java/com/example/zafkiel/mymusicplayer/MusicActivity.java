@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.zafkiel.EditActivity;
+import com.example.zafkiel.Entity.DataChangeReceiver;
 import com.example.zafkiel.R;
 import com.example.zafkiel.mymusicplayer.Common;
 
@@ -34,7 +36,7 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
 
@@ -42,7 +44,6 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         bingID();                                                                           //调用bingID();方法实现对控件的绑定
 
         Intent intent = getIntent();                                                    //通过getIntent()方法实现intent信息的获取
-        position = intent.getIntExtra("position", 0);            //获取position
         musicPath = intent.getStringExtra("musicPath");
 
         mediaPlayer = new MediaPlayer();

@@ -25,9 +25,10 @@ public class DataChangeReceiver extends BroadcastReceiver {
         if(hr.equals(str_1) && min.equals(str_2)) {
             Log.i("jabot", "到时间了");//.... 开始调用你们的功能
 
-            intent.setClass(context.getApplicationContext(), MusicActivity.class);
-            intent.putExtra("musicPath",path);
-            context.startActivity(intent);
+            Intent i = new Intent();
+            i.setClass(context.getApplicationContext(), MusicActivity.class);
+            i.putExtra("musicPath",path);
+            context.startActivity(i);
         }
     }
 
