@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".TTsActivity"
+            android:label="语音播报"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".clockActivity"></activity>
-        <activity android:name=".EditActivity"></activity>
-        <activity android:name=".mymusicplayer.MusicActivity"></activity>
-        <activity android:name=".mymusicplayer.MainActivity_music"></activity>
-        <service android:name=".Timeservice"></service>
+        <activity android:name=".clockActivity" />
+        <activity android:name=".EditActivity" />
+        <activity android:name=".mymusicplayer.MusicActivity" />
+        <activity android:name=".mymusicplayer.MainActivity_music" />
 
+        <service android:name=".Timeservice" />
     </application>
 
 </manifest>

@@ -70,15 +70,21 @@
 
     </LinearLayout>
     <Button
-    android:layout_width="100dp"
-    android:layout_height="80dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:text="返回"
     android:id="@+id/btn_return"/>
 
     <Button
         android:id="@+id/select_music"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="选择音乐" />
+
+    <Button
+        android:id="@+id/jmp_tts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="语音播报" />
 
 </LinearLayout>
