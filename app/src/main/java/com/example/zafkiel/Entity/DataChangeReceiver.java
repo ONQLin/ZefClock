@@ -29,7 +29,6 @@ public class DataChangeReceiver extends BroadcastReceiver {
 
         if(hr.equals(str_1) && min.equals(str_2)) {
             Log.i("jabot", "到时间了");//.... 开始调用你们的功能
-
             context.startActivity(i);
         }
     }

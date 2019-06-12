@@ -1,5 +1,6 @@
 package com.example.zafkiel;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +15,7 @@ import com.example.zafkiel.Entity.DataChangeReceiver;
 
 public class Timeservice extends Service {
     static public String str1,str2;
-    private PowerManager.WakeLock wakeLock = null;
+    public PowerManager.WakeLock mWakeLock;
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -30,13 +31,18 @@ public class Timeservice extends Service {
         return super.onStartCommand(intent, flags, startId);
 
     }
+    @SuppressLint("InvalidWakeLockTag")
     @Override
     public void onCreate() {
 
         super.onCreate();
-        PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
-        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, Timeservice.class.getName());
-        wakeLock.acquire();
+        if (null == mWakeLock) {
+            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK|PowerManager.ON_AFTER_RELEASE,"myService");
+            if (null != mWakeLock) {
+                mWakeLock.acquire();
+            }
+        }
         Log.i("jabot", "后台进程被创建。。。");
 
     }
@@ -45,9 +51,9 @@ public class Timeservice extends Service {
 
     @Override
     public void onDestroy() {
-        if (wakeLock != null) {
-            wakeLock.release();
-            wakeLock = null;
+        if (mWakeLock != null) {
+            mWakeLock.release();
+            mWakeLock = null;
         }
         Log.i("jabot", "后台进程被销毁了。。。");
         super.onDestroy();
