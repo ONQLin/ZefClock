@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zafkiel.NotifyActivity;
 import com.example.zafkiel.R;
 import com.example.zafkiel.TTsActivity;
 import com.example.zafkiel.TextToSpeechSystem;
@@ -44,7 +45,6 @@ public class MusicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_music);
 
 
@@ -77,6 +77,10 @@ public class MusicActivity extends AppCompatActivity {
                 }
             }
         });
+        Intent intent2 = new Intent(this,NotifyActivity.class);
+        intent2.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+        intent2.putExtra("notes",notes);
+        this.startActivity(intent2);
 
     }
 
