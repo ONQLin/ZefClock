@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.zafkiel.Entity.Centime;
 import com.example.zafkiel.mymusicplayer.MainActivity_music;
 import com.example.zafkiel.mymusicplayer.MusicActivity;
+import com.example.zafkiel.DialogActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
