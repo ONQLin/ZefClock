@@ -4,12 +4,15 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".clockActivity">
+    tools:context=".clockActivity"
+    android:id="@+id/main_layout">
+
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:id="@+id/ly_top">
 
         <TextView
             android:gravity="center"
@@ -49,13 +52,13 @@
         <Button
             android:layout_gravity="right"
             android:text="编辑"
-            android:layout_width="50dp"
+            android:layout_width="60dp"
             android:layout_height="50dp"
             android:id="@+id/btn_edit1"/>
         <Button
             android:layout_gravity="right"
             android:text="分享"
-            android:textSize="10dp"
+            android:textSize="12dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/btn_share"/>

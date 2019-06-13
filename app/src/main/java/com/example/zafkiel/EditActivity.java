@@ -21,6 +21,7 @@ public class EditActivity extends clockActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_edit);
         findViewById(R.id.btn_return).setOnClickListener(this);
         findViewById(R.id.select_music).setOnClickListener(this);
@@ -74,6 +75,7 @@ public class EditActivity extends clockActivity {
                     centime.setPath(path);
                     centime.setPosition(position);
                     centime.setSet_status(true);
+                    centime.setOn_status(true);
                     intent.setClass(getApplicationContext(), clockActivity.class);
                     intent.putExtra("time_mes",centime);
                     //使用putExtra（）传值

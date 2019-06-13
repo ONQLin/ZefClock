@@ -8,6 +8,7 @@ public class Centime implements Serializable {
     private String hint;
     private String path;
     private int position;
+    private boolean on_status;
 
     public int getPositon() {
         return position;
@@ -34,13 +35,23 @@ public class Centime implements Serializable {
     }
 
     private boolean set_status;
+
+    public boolean isOn_status() {
+        return on_status;
+    }
+
+    public void setOn_status(boolean on_status) {
+        this.on_status = on_status;
+    }
+
     public Centime(){
-        hour="1";
-        min="1";
-        hint="1";
+        hour="XX";
+        min="XX";
+        hint="";
         path="";
         position=0;
         set_status=false;
+        on_status=false;
     }
     public String getHour() {
         return hour;

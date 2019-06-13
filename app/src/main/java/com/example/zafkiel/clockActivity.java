@@ -1,10 +1,15 @@
 package com.example.zafkiel;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
@@ -39,15 +45,15 @@ public class clockActivity extends MainActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_clock);
         layout_1 = (LinearLayout) findViewById(R.id.linearLayout_id);
         tv_time = findViewById(R.id.ShowTime);
         tv_clock1= findViewById(R.id.tv_clock1);
         new TimeThread().start();
         initView_1();
+        if(centime.isOn_status())
         layout_1.setVisibility(View.GONE);
-
-
     }
 
     public class TimeThread extends Thread {
@@ -86,6 +92,9 @@ public class clockActivity extends MainActivity {
 
 
     private void initView_1() {
+        LinearLayout ly= findViewById(R.id.main_layout);
+        ly.setBackground(ContextCompat.getDrawable(this,R.drawable.bcg1));
+        centime=new Centime();
         findViewById(R.id.btn_add).setOnClickListener(this);
         findViewById(R.id.btn_edit1).setOnClickListener(this);
         findViewById(R.id.btn_on).setOnClickListener(this);
@@ -93,7 +102,7 @@ public class clockActivity extends MainActivity {
         findViewById(R.id.btn_del).setOnClickListener(this);
         SimpleDateFormat SDF = new SimpleDateFormat("   HH:mm   ");
         Date date = new Date(System.currentTimeMillis());
-        tv_clock1.setText(SDF.format(date));
+        tv_clock1.setText("  "+centime.getHour()+":"+centime.getMin()+"  ");
     };
 
     @Override
@@ -159,6 +168,13 @@ public class clockActivity extends MainActivity {
                 break;
 
             case R.id.btn_on:    //click and turn on the clock service;
+                LinearLayout ly= findViewById(R.id.main_layout);
+                LinearLayout ly1=findViewById(R.id.ly_top);
+                LinearLayout ly2=findViewById(R.id.linearLayout_id);
+                ly1.setBackgroundColor(Color.WHITE);
+                ly2.setBackgroundColor(0xFFFFFFFF);
+                ly.setBackground(ContextCompat.getDrawable(this,R.drawable.bcg2));
+
                 layout_1.setVisibility(View.VISIBLE);
                 Bundle bundle = getIntent().getExtras();
                 centime = (Centime) bundle.getSerializable("time_mes");
