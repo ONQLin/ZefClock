@@ -27,6 +27,7 @@
         <activity android:name=".clockActivity" />
         <activity android:name=".EditActivity" />
         <activity android:name=".DialogActivity" />
+        <activity android:name=".NotifyActivity" />
         <activity android:name=".mymusicplayer.MusicActivity" />
         <activity android:name=".mymusicplayer.MainActivity_music" />
 

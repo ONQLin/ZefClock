@@ -7,7 +7,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.zafkiel.mymusicplayer.MusicActivity;
-
+import com.example.zafkiel.DialogActivity;
+import com.example.zafkiel.NotifyActivity;
 
 
 import java.util.Calendar;
@@ -24,7 +25,9 @@ public class DataChangeReceiver extends BroadcastReceiver {
         int minute = mc.get(Calendar.MINUTE);
         String hr=String.valueOf(hour);
         String min=String.valueOf(minute);
-
+        Intent intent1 = new Intent(context,DialogActivity.class);
+        intent1.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+        intent1.putExtra("notes",notes);
         Intent i = new Intent(context,MusicActivity.class);
         i.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
         i.putExtra("position",position);
@@ -33,7 +36,7 @@ public class DataChangeReceiver extends BroadcastReceiver {
 
         if(hr.equals(str_1) && min.equals(str_2)) {
             Log.i("jabot", "到时间了");//.... 开始调用你们的功能
-
+            context.startActivity(intent1);
             context.startActivity(i);
         }
     }
