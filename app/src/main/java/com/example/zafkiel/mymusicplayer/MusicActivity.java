@@ -32,7 +32,6 @@ public class MusicActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private TextToSpeech ttspeech;
     String notes;
-    boolean flag;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
